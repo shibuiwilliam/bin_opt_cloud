@@ -114,11 +114,13 @@ def bin_pack_instance(apps, instance_size):
     return r, instances, total_cost
 
 
-# In[25]:
+# In[28]:
 
 if __name__ == '__main__':
+    list_cost = []
     for instance in instance_sizes:
         r, instances, total_cost = bin_pack_instance(apps, instance)
+        list_cost.append({'instance': instance['name'], 'total_cost': total_cost})
 
         print("\r") 
         print("Bin packing for : {0}".format(instance['name']))
@@ -133,6 +135,8 @@ if __name__ == '__main__':
             print("\t Contains: {0}".format(r.xf[i]))
 
         print("\r")  
+    
+    print("Result: {0}".format(list_cost))
 
 
 # ### Result
