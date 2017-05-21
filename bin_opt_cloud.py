@@ -1,4 +1,3 @@
-
 # coding: utf-8
 
 # # Bin Packing Optimization for AWS EC2 Instances
@@ -22,13 +21,13 @@
 # What it means by cost optimized is that you have to make the cost less as possible.<br>
 # Which instance sizes and how many instances do you choose to run the applications?
 
-# In[1]:
+
 
 # import openopt
 from openopt import *
 
 
-# In[6]:
+
 
 # number of each application by size
 small_num = 20
@@ -66,7 +65,7 @@ for i in range(large_num):
     apps.append(large_app)
 
 
-# In[3]:
+
 
 # instance size to choose from
 
@@ -101,7 +100,7 @@ instance_sizes = [
 ]
 
 
-# In[4]:
+
 
 # bin packing
 # returns solved model, number of instances to use and the total cost
@@ -114,7 +113,7 @@ def bin_pack_instance(apps, instance_size):
     return r, instances, total_cost
 
 
-# In[22]:
+
 
 if __name__ == '__main__':
     for instance in instance_sizes:
@@ -137,8 +136,6 @@ if __name__ == '__main__':
 
 # ### Result
 # Now you know from the total cost of the instances, it is efficient to use 4 c4.2xlarge instances for the applications.
-
-# In[ ]:
 
 
 
