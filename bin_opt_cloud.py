@@ -1,3 +1,4 @@
+
 # coding: utf-8
 
 # # Bin Packing Optimization for AWS EC2 Instances
@@ -21,13 +22,13 @@
 # What it means by cost optimized is that you have to make the cost less as possible.<br>
 # Which instance sizes and how many instances do you choose to run the applications?
 
-
+# In[1]:
 
 # import openopt
 from openopt import *
 
 
-
+# In[6]:
 
 # number of each application by size
 small_num = 20
@@ -65,42 +66,42 @@ for i in range(large_num):
     apps.append(large_app)
 
 
-
+# In[23]:
 
 # instance size to choose from
-
+# each resource are multiply by 0.9 for assuming OS uses the rest of 10%
 instance_sizes = [
     {
         'name': 'm4.x4large',
         'cost': 1.032 * 24 * 30,
         'size': {
-            'cpu': 16,
-            'mem': 64 * 1024, 
-            'disk': 1000
+            'cpu': 16 * 0.9,
+            'mem': 64 * 1024 * 0.9, 
+            'disk': 1000 * 0.9
         }
     },
     {
         'name': 'r3.2xlarge',
         'cost': 0.798 * 24 * 30,
         'size': {
-            'cpu': 8,
-            'mem': 61 * 1024, 
-            'disk': 1000
+            'cpu': 8 * 0.9,
+            'mem': 61 * 1024 * 0.9, 
+            'disk': 1000 * 0.9
         }
     },
     {
         'name': 'c4.2xlarge',
         'cost': 0.504 * 24 * 30,
         'size': {   
-            'cpu': 8,
-            'mem': 15 * 1024, 
-            'disk': 1000 
+            'cpu': 8 * 0.9,
+            'mem': 15 * 1024 * 0.9, 
+            'disk': 1000 * 0.9
         }
     }
 ]
 
 
-
+# In[24]:
 
 # bin packing
 # returns solved model, number of instances to use and the total cost
@@ -113,7 +114,7 @@ def bin_pack_instance(apps, instance_size):
     return r, instances, total_cost
 
 
-
+# In[25]:
 
 if __name__ == '__main__':
     for instance in instance_sizes:
@@ -136,6 +137,8 @@ if __name__ == '__main__':
 
 # ### Result
 # Now you know from the total cost of the instances, it is efficient to use 4 c4.2xlarge instances for the applications.
+
+# In[ ]:
 
 
 
